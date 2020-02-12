@@ -35,11 +35,11 @@ RUN apt-get install zlib1g-dev -y
 RUN DEBIAN_FRONTEND=noninteractive apt install -y iproute2 cmake python python-pip build-essential gfortran wget curl
 RUN pip install supervisor awscli
 RUN apt-get install openmpi-bin openmpi-common libopenmpi-dev iputils-ping -y
-ADD hordesat hordesat
-
-#RUN wget https://baldur.iti.kit.edu/hordesat/files/hordesat.zip
-#RUN unzip hordesat.zip
-RUN cd hordesat && ./makehordesat.sh
+#ADD hordesat hordesat
+#
+##RUN wget https://baldur.iti.kit.edu/hordesat/files/hordesat.zip
+##RUN unzip hordesat.zip
+#RUN cd hordesat && ./makehordesat.sh
 #ENV LD_LIBRARY_PATH=/usr/lib/openmpi/lib/:$LD_LIBRARY_PATH
 #ADD test.cnf supervised-scripts/test.cnf
 ADD mpi-run.sh supervised-scripts/mpi-run.sh
