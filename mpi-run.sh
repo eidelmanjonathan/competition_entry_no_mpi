@@ -48,9 +48,13 @@ wait_for_nodes () {
   # into one file with the following script:
   python supervised-scripts/make_combined_hostfile.py ${ip}
 
+  # Make a file with numbers 1
+  for i in $(seq 1 100); do echo $i >> test.txt; done
+  awk '{print NR % ${AWS_BATCH_JOB_NUM_NODES}}'
+
   for i in $(cat < "combined_hostfile"); do
     if [[ "$i" != *"slots"* ]]; then
-      scp hostfile.txt $i:~
+      scp test.txt $i:~
     fi
   done
 
